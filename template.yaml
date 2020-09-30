@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: A simple backend with a RESTful API endpoint using AWS API GW.
+Resources:
+  microservicehttpendpointpython3:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handler.hello
+      Runtime: python3.7
+      CodeUri: .
+      Description: A simple backend with a RESTful API endpoint using AWS API GW.
+      Timeout: 10
+      MemorySize: 512
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: ANY
